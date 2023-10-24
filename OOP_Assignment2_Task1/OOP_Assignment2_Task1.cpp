@@ -1,7 +1,7 @@
 ﻿// OOP_Assignment2_Task1.cpp : Defines the entry point for the application.
 //
 
-#include "OOP_Assignment2_Task1.h"
+#include <iostream>
 
 using namespace std;
 
