@@ -1,3 +1,10 @@
+// File: A2_S15_20220799_6cpp
+// Purpose: .........
+// Author: Omer Yassir
+// Section: S15
+// ID: 20220799
+// TA: ........................
+// Date: 24 Oct 2023
 #ifndef _6
 #define _6
 
