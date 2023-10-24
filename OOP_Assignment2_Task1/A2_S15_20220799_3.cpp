@@ -12,7 +12,9 @@ void getWords(vector<string>& r, string target, const string& delimiter);
 void problem3()
 {
 	string s, d;
-	getline(cin, s);
+	cout << "Enter string:";
+	getline(cin >> ws, s);
+	cout << "Enter delimiter:";
 	getline(cin, d);
 	vector<string> v = split(s, d);
 	for (auto &x : v)
