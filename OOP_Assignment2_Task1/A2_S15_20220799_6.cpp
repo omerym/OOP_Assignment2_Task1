@@ -15,6 +15,7 @@ using namespace std;
 static void binaryPrintNonZero(int n);
 static void binaryPrint(int n);
 static void numbers(string prefix, int k);
+int getDigitCount(int x);
 void printNumbers(const string &prefix, int k, int length);
 void problem6A(); 
 void problem6B();
@@ -70,9 +71,26 @@ void binaryPrint(int n)
 		binaryPrintNonZero(n);
 	}
 }
+int getDigitCount(int x)
+{
+	if (x <= 1)
+	{
+		return 1;
+	}
+	return 1 + getDigitCount(x >> 1);
+}
 void numbers(string prefix, int k)
 {
 	printNumbers(prefix, (1 << k) - 1, k);
+}
+void printZeros(int count)
+{
+	if (count <= 0)
+	{
+		return;
+	}
+	cout << 0;
+	printZeros(count - 1);
 }
 void printNumbers(const string &prefix, int suffix, int length)
 {
@@ -80,9 +98,10 @@ void printNumbers(const string &prefix, int suffix, int length)
 	{
 		return;
 	}
+	printNumbers(prefix, suffix - 1, length);
 	cout << prefix;
+	printZeros(length - getDigitCount(suffix));
 	binaryPrint(suffix);
 	cout << endl;
-	printNumbers(prefix, suffix - 1, length);
 }
 #endif // !_6
