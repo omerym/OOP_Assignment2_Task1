@@ -5,6 +5,7 @@
 #include "A2_S15_20220799_3.cpp"
 #include "A2_S15_20220799_6.cpp"
 #include "A2_S15_20220799_9.cpp"
+#include "A2_S15_20220799_12.cpp"
 
 using namespace std;
 
@@ -23,6 +24,9 @@ int main()
 		break;
 	case 9:
 		problem9();
+		break;
+	case 12:
+		problem12();
 		break;
 	default:
 		cout << "!!!!!!!!!";
