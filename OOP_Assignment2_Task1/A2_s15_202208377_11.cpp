@@ -6,7 +6,7 @@ using namespace std;
 bool compareByCharacter(const string &file1, const string &file2) {
     ifstream f1(file1), f2(file2);
     char c1, c2;
-    int line = 1, stringS = 1;
+    int line = 1, stringS =1;
 
     while (f1.get(c1) && f2.get(c2)) {
         if (c1 != c2) {
