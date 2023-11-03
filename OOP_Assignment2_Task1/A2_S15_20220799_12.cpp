@@ -18,6 +18,17 @@ using namespace std;
 void readFile(ifstream& stream, string message = "Enter file name: ");
 void readWordFile(unordered_map<string, int>& map);
 int evaluateFile(ifstream& in, unordered_map<string, int> map);
+string& toLower(string& str)
+{
+	for (int i = 0; i < str.size(); i++)
+	{
+		if (str[i] >= 'A' && str[i] <= 'Z')
+		{
+			str[i] += 'a' - 'A';
+		}
+	}
+	return str;
+}
 
 void problem12()
 {
@@ -34,7 +45,7 @@ int evaluateFile(ifstream& in, const unordered_map<string,int> map)
 	string word;
 	while (in >> word)
 	{
-		auto it = map.find(word);
+		auto it = map.find(toLower(word));
 		if (it != map.end())
 		{
 			score += it->second;
@@ -62,7 +73,7 @@ void readWordFile(unordered_map<string, int>  &map)
 	int score;
 	while (in >> word >> score)
 	{
-		map[word] = score;
+		map[toLower(word)] = score;
 	}
 }
 #endif // !_12
