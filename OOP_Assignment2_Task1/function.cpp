@@ -12,34 +12,30 @@ bool isRealNumber(string& str) {
   string tempStr = str;
 
   // Check if the first character is a plus or minus sign.
-  bool isNegative = (tempStr[0] == '-');
-  if (isNegative) {
+  if (tempStr[0] == '+' || tempStr[0] == '-') {
     tempStr = tempStr.substr(1);
   }
 
   // Check if the string contains only digits and a decimal point.
+  bool hasDecimal = false;
   for (int i = 0; i < tempStr.length(); i++) {
     if (!isdigit(tempStr[i]) && tempStr[i] != '.') {
       return false;
     }
-  }
-
-  // Check if the string contains more than one decimal point.
-  int dotCount = 0;
-  for (int i = 0; i < tempStr.length(); i++) {
     if (tempStr[i] == '.') {
-      dotCount++;
+      // Check for more than one decimal point.
+      if (hasDecimal) {
+        return false;
+      }
+      hasDecimal = true;
     }
-  }
-  if (dotCount > 1) {
-    return false;
   }
 
   return true;
 }
 
 int main() {
-  string str = "123.456";
+  string str = "+5";
   bool isReal = isRealNumber(str);
 
   if (isReal) {

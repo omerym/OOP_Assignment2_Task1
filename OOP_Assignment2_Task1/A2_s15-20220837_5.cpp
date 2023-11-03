@@ -1,88 +1,95 @@
 #include <iostream>
-#include <vector>
 #include <string>
+#include <vector>
 #include <algorithm>
 
-using namespace std;
-// Struct to store player data
+using namespace std; 
+
 struct Player {
     string name;
     int score;
 };
 
+void printTopPlayers(const vector<Player>& players) {
+    cout << "Top 10 Players and Scores:" << endl;
+    vector<Player> sortedPlayers = players;
+    sort(sortedPlayers.begin(), sortedPlayers.end(), [](const Player& a, const Player& b) {
+        return a.score > b.score;
+    });
+
+    int count = 0;
+    for (const Player& player : sortedPlayers) {
+        cout << player.name << " " << player.score << endl;
+        if (++count >= 10) {
+            break;
+        }
+    }
+}
+
 int main() {
-    vector<Player> playerList;
-    const int  maxPlayers = 10;
+    vector<Player> players;
 
     while (true) {
+        cout << "Menu:\n";
         cout << "1. Add a new player and score\n";
-        cout << "2. Print the top 10 names and scores\n";
-        cout << "3. Check a player's highest score\n";
-        cout << "4. Exit\n";
-        cout << "Enter your decision: ";
-        int decision;
-        cin >> decision;
+        cout << "2. Print the top 10 players and scores\n";
+        cout << "3. Enter a player name to get the highest score\n";
+        cout << "4.  done\n";
+        cout << "Enter your choice: ";
 
-        switch (decision) {
-            case 1:
-                if (playerList.size() >= maxPlayers) {
-                    // Remove the player with the lowest score
-                    int minScorePlayer = min_element(playerList.begin(), playerList.end(),[]
-                        (const Player &a, const Player &b) {
-                            return a.score < b.score;
-                        });
-                    playerList.erase(minScorePlayer);
-                };
+        int choice;
+        cin >> choice;
 
-             // Add a new player and score
-                Player newPlayer;
-                cout << "Enter the player's name: ";
-                cin >> newPlayer.name;
-                cout << "Enter the player's score: ";
-                cin >> newPlayer.score;
-                playerList.push_back(newPlayer);
-                break;
-       
+        if (cin.fail()) {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Invalid input. Please enter a valid choice." << endl;
+            continue;
+        }
 
-            case 2:
-                // Sort and print the top 10 names and scores
-                sort(playerList.rbegin(), playerList.rend(),
-                    [](const Player &a, const Player &b) {
-                        return a.score < b.score;
-                    });
+        if (choice == 1) {
+            Player player;
+            cout << "Enter player name: ";
+            cin >> player.name;
+            cout << "Enter player score: ";
+            cin >> player.score;
 
-                cout << "Top 10 names and scores:\n";
-                for (int i = 0; i < min(maxPlayers, static_cast<int>(playerList.size())); i++) {
-                    cout << playerList[i].name << " " << playerList[i].score << endl;
+            if (cin.fail()) {
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                cout << "Invalid input. Please enter a valid score." << endl;
+                continue;
+            }
+
+            players.push_back(player);
+
+            if (players.size() > 10) {
+                players.erase(min_element(players.begin(), players.end(),
+                    [](const Player& a, const Player& b) { return a.score < b.score; }));
+            }
+        } else if (choice == 2) {
+            printTopPlayers(players);
+        } else if (choice == 3) {
+            string playerName;
+            cout << "Enter player name: ";
+            cin >> playerName;
+            bool found = false;
+            int highestScore = 0;
+            for (const Player& player : players) {
+                if (player.name == playerName) {
+                    found = true;
+                    highestScore = max(highestScore, player.score);
                 }
-                break;
-
-            case 3:
-                // Check a player's highest score
-                string playerName;
-                cout << "Enter the player's name: ";
-                cin >> playerName;
-
-                int highestScore = 0;
-                for (const Player &player : playerList) {
-                    if (player.name == playerName) {
-                        highestScore = max(highestScore, player.score);
-                    }
-                }
-
-                if (highestScore > 0) {
-                   cout << playerName << "'s highest score is: " << highestScore << endl;
-                } else {
-                    cout << playerName << " is not in the top 10 or hasn't been added." << endl;
-                }
-                break;
-
-            case 4:
-                
-                return 0;
-
-            default:
-                cout << "Invalid choice. Please try again.\n";
+            }
+            if (found) {
+                cout << playerName << "'s highest score is: " << highestScore << endl;
+            } else {
+                cout << "Player not found in the top 10 list." << endl;
+            }
+        } else if (choice == 4) {
+            break;
+        } else {
+            cout << "Invalid choice. Please select a valid option." << endl;
         }
     }
 
