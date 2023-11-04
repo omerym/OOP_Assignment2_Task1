@@ -1,4 +1,4 @@
-// File: A2_S15_20220837_8cpp
+// File: A2_S15_20220837_2cpp
 // Purpose: .........
 // Author: bashar abdalla
 // Section: S15
@@ -7,31 +7,30 @@
 // Date: 4 nov 2023
 
 
-#ifndef _2
-#define _2
-
+#ifndef _8
+#define _8
 
 #include <iostream>
 using namespace std;
-void fractal(int n) {
-    for (int i = 0; i < n; i++) {
-        cout << "* ";
-    }
-    cout << endl;
+
+void pattern(int length,  int left)
+{
+   if ( length == 0 ) return;
+
+   pattern(length / 2, left);                            // "Half pattern" above
+
+   for ( int i = 0; i < left  ; i++ ) cout << "  ";
+   for ( int i = 0; i < length; i++ ) cout << "* ";        // Central string
+   cout << endl;
+
+   pattern(length / 2, left + length / 2);               // "Half pattern" below
 }
 
-void pattern(int n, int i) {
-    if (n == 1) {
-        fractal(1); 
-    } else {
-        pattern(n / 2, i+1); 
-        fractal(n); 
-        pattern(n / 2, i + n); 
-    }
-}
-
-int main() {
-    pattern(8, 0); 
-    return 0;
+int main()
+{
+    cout<<"enter the numbers";
+   int n, i;
+   cin >> n >> i;
+   pattern(n , i);
 }
 #endif 
