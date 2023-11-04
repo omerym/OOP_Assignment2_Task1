@@ -1,3 +1,11 @@
+// File: A2_S15_20220837_2cpp
+// Purpose: .........
+// Author: bashar abdalla
+// Section: S15
+// ID: 20220837
+// TA: ........................
+// Date: 4 nov 2023
+
 
 #ifndef _2
 #define _2

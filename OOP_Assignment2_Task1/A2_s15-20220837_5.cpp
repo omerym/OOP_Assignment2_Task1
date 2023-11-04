@@ -1,7 +1,22 @@
+// File: A2_S15_20220837_5cpp
+// Purpose: .........
+// Author: bashar abdalla
+// Section: S15
+// ID: 20220837
+// TA: ........................
+// Date: 4 nov 2023
+
+
+
+#ifndef _2
+#define _2
+
+
 #include <iostream>
 #include <string>
 #include <vector>
 #include <algorithm>
+
 
 using namespace std; 
 
@@ -95,3 +110,4 @@ int main() {
 
     return 0;
 }
+#endif 

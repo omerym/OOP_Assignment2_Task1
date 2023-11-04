@@ -6,6 +6,9 @@
 #include "A2_S15_20220799_6.cpp"
 #include "A2_S15_20220799_9.cpp"
 #include "A2_s15_202208377_2.cpp"
+#include "A2_s15-20220837_5.cpp"
+#include "A2_s15_202208377_8.cpp"
+#include "A2_s15_202208377_11.cpp"
 
 using namespace std;
 
