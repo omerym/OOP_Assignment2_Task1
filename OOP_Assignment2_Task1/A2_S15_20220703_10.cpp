@@ -2,12 +2,13 @@
 #include <string>
 #include <fstream>
 #include <vector>
+#include <sstream>
 using namespace std;
 string censor(string& originalmessage);
 int main()
 {
     string s;
-    cin>>s;
+    getline(cin,s);
     s=censor(s);
     cout<<s;
 }
@@ -16,37 +17,49 @@ string censor(string& originalmessage)
 string line;
 vector<string> censoredterms;
 vector<string> replacements;
-ifstream file1("TermsToReplace.txt");
 string output;
 string slice;
 string finale;
-while(getline(file1,line))
+string word;
+string censors;
+string replacementTerm;
+bool replace;
+ifstream file1("CensoredTerms.txt");
+if (!file1) {
+        cout << "Error opening CensoredTerms.txt" << endl;
+        return "";
+    }
+while(file1>>censors)
 {
-censoredterms.push_back(line);
+censoredterms.push_back(censors);
 }
-ifstream file2("CensoredTerms.txt");
-while(getline(file2,line))
+ifstream file2("TermsToReplace.txt");
+if (!file2) {
+        cout << "Error opening TermsToReplace.txt" << endl;
+        return "";
+    }
+while(file2>>censors)
 {
-replacements.push_back(line);
+replacements.push_back(censors);
 }
-for (int i =0;i<originalmessage.size();i++)
-{
-    for(int j=0;j<censoredterms.size();j++)
+istringstream iss(originalmessage);
+while (iss >> word) 
     {
-        if(originalmessage[i]==censoredterms[j][0])
+        replace=false;
+        for(int i=0;i<censoredterms.size();i++)
+    {
+        cout<<word<<' '<<censoredterms[i];
+        if(word==censoredterms[i])
         {
-            for(int k=0;k< censoredterms[j].size();k++)
-            {
-                slice+=originalmessage[i+k];
-            }
-            if(slice==censoredterms[j])
-            {
-                finale+=replacements[j];
-            }
-            slice.clear();
+            finale+=replacements[i]+" ";
+            replace=true;
+            break;
         }
     }
-    finale+=originalmessage[i];
-}
+    if(!replace)
+        {
+            finale+=word+"";
+        }
+    }
 return finale;
 }
