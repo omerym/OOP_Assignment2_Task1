@@ -38,8 +38,10 @@ int main()
 		break;
 	case 5:
 		problem5();
+		break;
 	case 6:
 		problem6();
+		break;
 	case 7:
 		Problem7();
 		break;
