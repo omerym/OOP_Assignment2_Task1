@@ -1,22 +1,7 @@
-// File: A2_S15_20220837_5cpp
-// Purpose: .........
-// Author: bashar abdalla
-// Section: S15
-// ID: 20220837
-// TA: ........................
-// Date: 4 nov 2023
-
-
-
-#ifndef _5
-#define _5
-
-
 #include <iostream>
 #include <string>
 #include <vector>
 #include <algorithm>
-
 
 using namespace std; 
 
@@ -41,7 +26,7 @@ void printTopPlayers(const vector<Player>& players) {
     }
 }
 
-void problem5() {
+int main() {
     vector<Player> players;
 
     while (true) {
@@ -108,5 +93,5 @@ void problem5() {
         }
     }
 
+    return 0;
 }
-#endif 
