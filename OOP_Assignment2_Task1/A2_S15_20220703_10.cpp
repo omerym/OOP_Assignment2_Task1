@@ -2,11 +2,12 @@
 #include <string>
 #include <fstream>
 #include <vector>
-#include <sstream>
+#include <cstdlib>
 using namespace std;
 string censor(string& originalmessage);
 void Problem10()
 {
+    cout<<"please enter your message to censor"<<endl;
     string s;
     getline(cin,s);
     s=censor(s);
@@ -14,53 +15,69 @@ void Problem10()
 }
 string censor(string& originalmessage)
 {
-string line;
 vector<string> censoredterms;
 vector<string> replacements;
-string output;
-string slice;
 string finale;
-string word;
 string censors;
 string replacementTerm;
+string fixed;
 bool replace;
-ifstream file1("CensoredTerms.txt");
+cout<<"Please Enter FilePath for censored terms"<<endl;
+string filepath;
+getline(cin,filepath);
+ifstream file1(filepath);
 if (!file1) {
         cout << "Error opening CensoredTerms.txt" << endl;
         return "";
     }
-while(file1>>censors)
+string Line;
+while(getline(file1,Line))
 {
-censoredterms.push_back(censors);
+censoredterms.push_back(Line);
 }
-ifstream file2("TermsToReplace.txt");
+cout<<"Please Enter FilePath for terms to replace with"<<endl;
+string filepath2;
+getline(cin,filepath2);
+ifstream file2(filepath2);
 if (!file2) {
-        cout << "Error opening TermsToReplace.txt" << endl;
+        cout << "Error opening" << endl;
         return "";
     }
-while(file2>>censors)
+while(getline(file2,Line))
 {
-replacements.push_back(censors);
+replacements.push_back(Line);
 }
-istringstream iss(originalmessage);
-while (iss >> word) 
+int random;
+string stor;
+bool flag;
+for (int i=0;i<originalmessage.size();i++)
+{
+    for (int j=0;j<censoredterms.size();j++)
     {
-        replace=false;
-        for(int i=0;i<censoredterms.size();i++)
-    {
-        cout<<word<<' '<<censoredterms[i];
-        if(word==censoredterms[i])
+        if(originalmessage[i]==censoredterms[j][0])
         {
-            finale+=replacements[i]+" ";
-            replace=true;
-            break;
+            for (int k=0;k<censoredterms[j].size();k++)
+            {
+                stor+=originalmessage[i+k];
+            }
+            if(stor==censoredterms[j])
+            {
+                random=rand()%replacements.size();
+                finale+=replacements[random]+" ";
+                i+=censoredterms[j].size();
+                stor="";
+                flag=true;
+            }
         }
     }
-    if(!replace)
-        {
-            finale+=word+"";
-        }
-    }
+if(flag==false)
+{
+finale+=originalmessage[i];
+}
+flag=false;
+
+    
+}
 return finale;
 }
 void Problem10();

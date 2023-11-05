@@ -9,6 +9,10 @@ if('a'<=input[0]&&input[0]<='z')
     {
         fixed+=char(input[0]-32);
     }
+else
+{
+    fixed+=input[0];
+}
 for(int i=1;i<input.size();i++){
     if(input[i]==' ')
     {
@@ -40,9 +44,9 @@ input = fixed;
 void Problem1();
 void Problem1()
 {
+    cout<<"Please enter string to fix"<<endl;
     string S;
     getline(cin,S);
     fixer(S);
     cout<<S;
 }
-//the Answer to life, the Universe, and everything IS 42.

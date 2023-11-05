@@ -1,3 +1,6 @@
 bubbles
 waterdrop
 Human
+Sun
+Moon
+Star

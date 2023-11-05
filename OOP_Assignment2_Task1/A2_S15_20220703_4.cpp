@@ -31,7 +31,7 @@ void Problem4();
 void Problem4()
 {
     int N;
-    cout<<"enter number";
+    cout<<"enter number to get primes below";
     cin>>N;
     Primes(N);
 }

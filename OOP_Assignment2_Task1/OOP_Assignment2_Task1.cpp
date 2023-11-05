@@ -20,10 +20,11 @@ int main()
 	cout << "enter problem number:";
 	int pn;
 	cin >> pn;
+	cin.ignore();
 	switch (pn)
 	{
 	case 1:
-		{Problem1();}
+		Problem1();
 		break;
 	case 2:
 		break;
