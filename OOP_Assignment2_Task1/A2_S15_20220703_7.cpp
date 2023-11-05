@@ -9,9 +9,10 @@ struct dominoT {
 
 bool success(vector <dominoT> Dominos,vector<dominoT>& correctDominos, int slot = 0);
 
-int main() {
+void Problem7() {
     vector<dominoT> blocks;
     int numDominoes;
+    cout<<"Please enter your Dominoes";
     cin >> numDominoes;
 
     for (int i = 0; i < numDominoes; i++) {
@@ -33,7 +34,6 @@ int main() {
             cout<< ' '<<correctDominos[i].leftDots<<' '<<'|'<<' '<<correctDominos[i].rightDots<<' '<<'-';
         }
     }
-    return 0;
 }
     bool success(vector<dominoT> Dominos, vector<dominoT>& correctDominos, int slot) {
     if (slot == Dominos.size()) {
@@ -54,3 +54,4 @@ int main() {
 
     return false;
 }
+void Problem7();

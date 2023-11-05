@@ -26,7 +26,7 @@ void pattern(int length,  int left)
    pattern(length / 2, left + length / 2);               // "Half pattern" below
 }
 
-int main()
+void problem8()
 {
     cout<<"enter the numbers";
    int n, i;

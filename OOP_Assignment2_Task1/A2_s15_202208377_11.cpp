@@ -72,7 +72,7 @@ bool compareByWord(const string &file1, const string &file2) {
     return true;
 }
 
-int main() {
+void problem11() {
     string file1, file2;
     int choice;
 
@@ -94,6 +94,5 @@ int main() {
         cout << "Invalid choice." << endl;
     }
 
-    return 0;
 }
 #endif 

@@ -37,4 +37,12 @@ for(int i=1;i<input.size();i++){
 }
 input = fixed;
 }
+void Problem1();
+void Problem1()
+{
+    string S;
+    getline(cin,S);
+    fixer(S);
+    cout<<S;
+}
 //the Answer to life, the Universe, and everything IS 42.

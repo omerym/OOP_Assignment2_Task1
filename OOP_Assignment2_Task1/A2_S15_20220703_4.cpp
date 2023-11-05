@@ -27,3 +27,11 @@ for(int i=0;i<N;i++)
     }
 }
 }
+void Problem4();
+void Problem4()
+{
+    int N;
+    cout<<"enter number";
+    cin>>N;
+    Primes(N);
+}

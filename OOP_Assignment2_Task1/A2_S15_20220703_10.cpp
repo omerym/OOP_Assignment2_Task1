@@ -5,7 +5,7 @@
 #include <sstream>
 using namespace std;
 string censor(string& originalmessage);
-int main()
+void Problem10()
 {
     string s;
     getline(cin,s);
@@ -63,3 +63,4 @@ while (iss >> word)
     }
 return finale;
 }
+void Problem10();

@@ -13,7 +13,7 @@
 #include <iostream>
 #include <string>
 using namespace std;
-int main() {
+void Problem2() {
     string sentence;
     
     
@@ -42,6 +42,5 @@ int main() {
     
    cout << "new sentence: " << sentence << endl;
 
-    return 0;
 }
 #endif
