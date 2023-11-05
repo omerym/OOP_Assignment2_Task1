@@ -6,7 +6,7 @@
 #include "A2_s15_202208377_2.cpp"
 #include "A2_S15_20220799_3.cpp"
 #include "A2_S15_20220703_4.cpp"
-//#include "A2_s15-20220837_5.cpp"
+#include "A2_s15-20220837_5.cpp"
 #include "A2_S15_20220799_6.cpp"
 #include "A2_S15_20220703_7.cpp"
 #include "A2_s15_20220837_8.cpp"
@@ -14,7 +14,6 @@
 #include "A2_S15_20220703_10.cpp"
 #include "A2_s15_20220837_11.cpp"
 #include "A2_S15_20220799_12.cpp"
-void Problem1();
 using namespace std;
 
 int main()
@@ -37,6 +36,8 @@ int main()
 	case 4:
 		Problem4();
 		break;
+	case 5:
+		problem5();
 	case 6:
 		problem6();
 	case 7:

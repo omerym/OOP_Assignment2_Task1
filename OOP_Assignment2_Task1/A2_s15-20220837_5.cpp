@@ -26,7 +26,7 @@ void printTopPlayers(const vector<Player>& players) {
     }
 }
 
-int main() {
+int problem5() {
     vector<Player> players;
 
     while (true) {
