@@ -1,3 +1,10 @@
+// File: A2_S15_20220703_10.cpp
+// Purpose: .........
+// Author: Omar Salah
+// Section: S15
+// ID: 20220703
+// TA: ........................
+// Date: 4 nov 2023
 #include <iostream>
 #include <string>
 #include <fstream>
