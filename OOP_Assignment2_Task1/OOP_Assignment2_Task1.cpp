@@ -43,6 +43,9 @@ int main()
 	case 7:
 		Problem7();
 		break;
+	case 8:
+		problem8();
+		break;
 	case 9:
 		problem9();
 		break;
