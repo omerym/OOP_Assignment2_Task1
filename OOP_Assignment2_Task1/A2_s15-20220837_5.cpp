@@ -108,6 +108,5 @@ void problem5() {
         }
     }
 
-    return 0;
 }
 #endif 
