@@ -8,7 +8,6 @@
 #include <iostream>
 #include <string>
 using namespace std;
-void fixer(string& input);
 void fixer(string& input){
     string fixed;
 int trigger=0;
@@ -48,10 +47,9 @@ for(int i=1;i<input.size();i++){
 }
 input = fixed;
 }
-void Problem1();
 void Problem1()
 {
-    cout<<"Please enter string to fix"<<endl;
+    cout<<"Please enter string to fix: "<<endl;
     string S;
     getline(cin,S);
     fixer(S);

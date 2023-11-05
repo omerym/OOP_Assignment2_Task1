@@ -28,7 +28,7 @@ for (int i =2;i<N;i++)
 }
 for(int i=0;i<N;i++)
 {
-    if(storage[i]!=0)
+    if(storage[i]!=0 && storage[i] != 1)
     {
         cout<<storage[i]<<endl;
     }
