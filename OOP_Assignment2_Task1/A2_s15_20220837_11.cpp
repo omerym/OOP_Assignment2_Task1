@@ -1,98 +1,140 @@
-// File: A2_S15_20220837_11cpp
-// Purpose: .........
-// Author: bashar abdalla
-// Section: S15
-// ID: 20220837
-// TA: ........................
-// Date: 4 nov 2023
-
-#ifndef _11
-#define _11
-
-
 #include <iostream>
+#include <vector>
 #include <fstream>
-#include <string>
+#include <sstream>
 
 using namespace std;
-bool compareByCharacter(const string &file1, const string &file2) {
-    ifstream f1(file1), f2(file2);
-    char c1, c2;
-    int line = 1, stringS =1;
 
-    while (f1.get(c1) && f2.get(c2)) {
-        if (c1 != c2) {
-            cout << "Files are different at line " << line << ", character " << stringS << endl;
-            cout << "File 1: " << c1 << endl;
-            cout << "File 2: " << c2 << endl;
-            return false;
+void characterCompare(ifstream& file1, ifstream& file2) {
+
+    string line1;
+    string line2;
+    int lineNumber = 1;
+    while (getline(file1, line1) && getline(file2, line2)) {
+
+        if (line1 != line2) {
+            cout << "Line Number: " << lineNumber << '\n';
+            cout << "the different line is: ";
+            cout << line1 << '\n';
+            cout << "the different line is: ";
+            cout << line2;
+
+            return;
         }
-        if (c1 == '\n') {
-            line++;
-           stringS = 0;
-        }
-
-        stringS++;
+        lineNumber++;
     }
+    
+    cout << "the two files are identical";
 
-    if (!f1.eof() || !f2.eof()) {
-        cout << "Files have different lengths." << endl;
-        return false;
-    }
-
-    cout << "Files are identical." << endl;
-    return true;
 }
 
-// Function to compare files  by word
-bool compareByWord(const string &file1, const string &file2) {
-    ifstream f1(file1), f2(file2);
-    string word1, word2;
-    int line = 1;
 
-    while (f1 >> word1 && f2 >> word2) {
-        if (word1 != word2) {
-            cout << "Files are different at line " << line << endl;
-            cout << "File 1: " << word1 << endl;
-            cout << "File 2: " << word2 << endl;
-            return false;
+void wordCompare(ifstream& file1, ifstream& file2) {
+    vector<vector<string>> v1;
+    vector<vector<string>> v2;
+    string line1;
+    string line2;
+    int lineNumber = 1;
+
+    while (getline(file1, line1) && getline(file2, line2)) {
+        vector<string> words1;
+        vector<string> words2;
+
+        
+        stringstream ss1(line1);
+        string word;
+        while (ss1 >> word) {
+            words1.push_back(word);
         }
 
-        if (word1.find('\n') != string::npos) {
-            line++;
+        stringstream ss2(line2);
+        while (ss2 >> word) {
+            words2.push_back(word);
         }
+
+        v1.push_back(words1);
+        v2.push_back(words2);
+
+        lineNumber++;
     }
 
-    if ((!f1.eof() && f2.eof()) || (f1.eof() && !f2.eof())) {
-        cout << "Files have different lengths." << endl;
-        return false;
+    int i = 0;
+    int j = 0;
+
+    while (i < v1.size() && j < v2.size()) {
+        int ch = 0;
+        while (ch < v1[i].size() && ch < v2[j].size()) {
+
+            if (v1[i][ch] != v2[j][ch]) {
+
+                cout << "First different word: " << v2[i][ch] << '\n';
+
+                cout << "File 1: ";
+                for (int word = 0; word < v1.size(); word++) {
+                    cout << v1[i][word] << " ";
+                }
+
+                cout << '\n';
+
+                cout << "File 2: ";
+                for (int word = 0; word < v2.size(); word++) {
+                    cout << v2[i][word] << " ";
+                }
+                return;
+            }
+            ch++;
+        }
+        i++;
+        j++;
     }
 
-    cout << "Files are identical." << endl;
-    return true;
+    cout << "The files are identical";
 }
 
-void problem11() {
-    string file1, file2;
-    int choice;
 
-    cout << "Enter the name of the first file: ";
-    cin >> file1;
-    cout << "Enter the name of the second file: ";
-    cin >> file2;
 
-    cout << "Choose comparison type:" << endl;
-    cout << "1. Character by character" << endl;
-    cout << "2. Word by word" << endl;
-    cin >> choice;
 
-    if (choice == 1) {
-        compareByCharacter(file1, file2);
-    } else if (choice == 2) {
-        compareByWord(file1, file2);
-    } else {
-        cout << "Invalid choice." << endl;
+
+int main() {
+
+    vector <vector<string>> diff;
+
+    string path1;
+    string path2;
+    ifstream file1;
+    ifstream file2;
+
+    cout << "Enter file1 path: ";
+    cin >> path1; 
+    cout << '\n' << "Enter file2 path : ";
+    cin >> path2;
+
+    path1.append(".txt");
+    path2.append(".txt");
+
+    file1.open(path1);
+    file2.open(path2);
+
+
+
+
+    char option;
+    cout << "C : to compare two files by characters \n";
+    cout << "W : to compare two files by words \n";
+
+    cin >> option;
+
+
+
+    if (option == 'C' || option == 'c') {
+        characterCompare(file1, file2);
+    }
+    else if (option == 'W' || option == 'w') {
+        wordCompare(file1, file2);
     }
 
+
+    file1.close();
+    file2.close();
+
 }
-#endif 
