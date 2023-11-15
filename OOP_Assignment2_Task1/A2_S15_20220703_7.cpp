@@ -36,7 +36,7 @@ void Problem7() {
 
     for(int i=0;i<correctDominos.size();i++)
     {
-        if(i!=correctDominos.size()-1)
+        if(i!=correctDominos.size())
         {
             cout<< ' '<<correctDominos[i].leftDots<<' '<<'|'<<' '<<correctDominos[i].rightDots<<' '<<'-';
         }

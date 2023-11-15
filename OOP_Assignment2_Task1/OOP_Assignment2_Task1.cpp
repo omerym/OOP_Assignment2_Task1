@@ -28,7 +28,7 @@ int main()
 		Problem1();
 		break;
 	case 2:
-		Problem2();
+		problem2();
 		break;
 	case 3:
 		problem3();

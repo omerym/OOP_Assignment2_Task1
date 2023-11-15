@@ -95,7 +95,7 @@ void wordCompare(ifstream& file1, ifstream& file2) {
 
 
 
-int main() {
+void problem11() {
 
     vector <vector<string>> diff;
 

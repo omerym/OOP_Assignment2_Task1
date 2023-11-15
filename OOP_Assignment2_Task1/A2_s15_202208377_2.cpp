@@ -5,7 +5,7 @@
 
 using namespace std;
 
-int main() {
+int problem2() {
     vector<string> strs;
     string str;
 
